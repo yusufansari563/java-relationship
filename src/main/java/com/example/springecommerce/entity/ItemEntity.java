@@ -1,5 +1,6 @@
 package com.example.springecommerce.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import org.hibernate.Hibernate;
@@ -9,7 +10,6 @@ import java.util.Date;
 import java.util.Objects;
 
 @Data
-@RequiredArgsConstructor
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -29,9 +29,9 @@ public class ItemEntity {
     @Column(name = "product_desc")
     private String prodDesc;
 
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "cart_id")
-    @JsonManagedReference
+    @JsonBackReference
     private CartEntity cart;
 
     @Temporal(TemporalType.TIMESTAMP)

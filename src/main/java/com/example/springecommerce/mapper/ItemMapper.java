@@ -11,8 +11,8 @@ import java.util.stream.Collectors;
 public interface ItemMapper {
     ItemModel entityToModel(ItemEntity entity);
     public default List<ItemModel> entityToModelList(List<ItemEntity> entityList){
-        return entityList.stream().map(this::entityToModel).collect(Collectors.toList());
-    }
+        return entityList.stream().map(item->entityToModel(item)).collect(Collectors.toList());
+    }   
 //    ItemEntity modelToEntity(ItemEntity entity);
 //    List<ItemEntity> modelToEntityList(List<ItemEntity> entity);
 }

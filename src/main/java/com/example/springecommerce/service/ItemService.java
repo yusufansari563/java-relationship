@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class ItemService {
@@ -17,8 +18,9 @@ public class ItemService {
 
     ItemMapper itemMapper;
 
-    public List<ItemModel> getItem() {
+    public Optional<List<ItemEntity>> getItem() {
         List<ItemEntity> entityList = itemRepository.findAll();
-        return itemMapper.entityToModelList(entityList);
+        Optional<List<ItemEntity>> otp = Optional.of(entityList);
+        return otp;
     }
 }

@@ -9,7 +9,7 @@ import java.util.List;
 public class ItemModel {
     private int id;
     private String prodName;
-    private String prodPrice;
+    private int prodPrice;
     private String prodDesc;
     private List<ItemEntity> cart;
 }

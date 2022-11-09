@@ -9,6 +9,6 @@ import java.util.List;
 public class CartModel {
     private int id;
     private String owner;
-    private String productCount;
+    private int productCount;
     private List<ItemEntity> item;
 }

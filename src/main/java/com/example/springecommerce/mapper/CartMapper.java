@@ -9,9 +9,15 @@ import java.util.stream.Collectors;
 
 @Mapper(componentModel = "spring")
 public interface CartMapper {
-    CartModel entityToModel(CartEntity model);
+    CartModel entityToModel(CartEntity entity);
     public default List<CartModel> entityToModelList(List<CartEntity> entityList){
-        return entityList.stream().map(this::entityToModel).collect(Collectors.toList());
+        System.out.println("###################################################");
+        System.out.println("###################################################");
+        System.out.println("###################################################");
+        System.out.println("###################################################");
+        System.out.println("###################################################");
+        System.out.println(entityList);
+        return entityList.stream().map(item->entityToModel(item)).collect(Collectors.toList());
     }
     CartEntity modelToEntity(CartModel entity);
 //    List<CartEntity> modelToEntityList(List<CartEntity> entity);

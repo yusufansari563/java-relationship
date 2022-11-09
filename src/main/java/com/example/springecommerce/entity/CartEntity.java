@@ -1,16 +1,30 @@
 package com.example.springecommerce.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.*;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+
 import org.hibernate.Hibernate;
 
-import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 @Data
-@RequiredArgsConstructor
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -25,10 +39,10 @@ public class CartEntity {
     private String owner;
 
     @Column(name = "product_count")
-    private String productCount;
+    private int productCount;
 
-    @OneToMany(mappedBy = "cart",fetch = FetchType.EAGER)
-    @JsonBackReference
+    @OneToMany(mappedBy = "cart",fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<ItemEntity> item;
 
     @Temporal(TemporalType.TIMESTAMP)
